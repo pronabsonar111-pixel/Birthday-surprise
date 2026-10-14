@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Chhoti Chudail 💗</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,sans-serif;text-align:center;color:#743451;background:#fff1f7;overflow-x:hidden}
+section{min-height:90vh;padding:55px 16px;display:flex;flex-direction:column;justify-content:center;align-items:center}
+h1{font-size:clamp(32px,8vw,52px);margin:12px 0}
+h2{font-size:clamp(25px,6vw,36px)}
+p{font-size:18px;line-height:1.7;max-width:650px}
+button{border:0;padding:14px 22px;margin:12px;border-radius:28px;background:#ff5fa2;color:white;font-size:16px;font-weight:bold;box-shadow:0 5px 15px #f4a5ca}
+.hero{background:linear-gradient(135deg,#ffe0ef,#fff5fa,#f2e5ff)}
+.lavender{background:linear-gradient(135deg,#f1e5ff,#ffeaf6)}
+.peach{background:linear-gradient(135deg,#ffeadf,#fff5ef)}
+.mint{background:linear-gradient(135deg,#e0fff1,#f4fff9)}
+.blue{background:linear-gradient(135deg,#e4f3ff,#fff0f8)}
+.emoji{font-size:70px;animation:bounce 2s infinite}
+@keyframes bounce{50%{transform:translateY(-10px)}}
+.card{width:min(100%,440px);padding:22px;background:#ffffffd9;border-radius:24px;box-shadow:0 8px 25px #e7b1d0}
+.photo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:min(100%,650px)}
+.photo-grid img{width:100%;height:210px;object-fit:cover;background:#ffe0ef;border:4px solid white;border-radius:18px;box-shadow:0 4px 12px #e9b5d1}
+.candles{font-size:36px;letter-spacing:5px}
+.flame{display:inline-block;animation:flicker .5s infinite alternate}
+@keyframes flicker{to{transform:scale(1.15) rotate(5deg)}}
+.cake,.gift{font-size:90px;cursor:pointer}
+#giftMessage{display:none}
+.small{font-size:13px;opacity:.8}
+#fireworks{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1000}
+#heartBalloons{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:1001}
+.heart-balloon{position:absolute;bottom:-100px;font-size:42px;animation:heartFly 6s ease-in forwards;filter:drop-shadow(0 0 8px #ff8fcb)}
+@keyframes heartFly{0%{transform:translateY(0) rotate(-10deg);opacity:0}15%{opacity:1}50%{transform:translateY(-55vh) rotate(10deg)}100%{transform:translateY(-115vh) rotate(-10deg);opacity:0}}
+#surpriseText{position:fixed;top:40%;left:0;width:100%;font-size:clamp(38px,10vw,65px);font-weight:bold;color:#ff3590;text-shadow:0 0 15px white,0 0 30px #ff8bc5;z-index:1002;pointer-events:none;opacity:0}
+#surpriseText.show{animation:pop 3.5s ease forwards}
+@keyframes pop{0%{opacity:0;transform:scale(.2)}20%{opacity:1;transform:scale(1.2)}35%{transform:scale(1)}80%{opacity:1}100%{opacity:0;transform:scale(1.1)}}
+footer{padding:25px;background:#ffe0ef}
+</style>
+</head>
+<body>
+<canvas id="fireworks"></canvas><div id="heartBalloons"></div><div id="surpriseText"></div>
+
+<audio id="music" loop controls style="width:min(90%,350px);margin:14px auto;display:block">
+  <source src="birthday-song.mp3" type="audio/mpeg">
+  Your browser cannot play this audio.
+</audio>
+
+<section class="hero" id="welcome">
+  <div class="emoji">🎀💗</div>
+  <h1>Hey, Chhoti Chudail! 👻💕</h1>
+  <p>Oye meri pyari chhoti chudail! Tere liye kuch special hai. Ready for your surprise? 🥹🩷</p>
+  <button onclick="openPage()">💗 TAP TO OPEN 💗</button>
+</section>
+
+<section class="lavender">
+  <div class="emoji">🎂</div><h2>Happy Birthday! 🥳</h2>
+  <div class="card">
+    <p>Meri pyari chhoti chudail, aaj ka din sirf tere naam! 🩷</p>
+    <p>Teri smile se din roshan ho jaaye, aur teri life khushiyon se bhar jaaye. 💖✨</p>
+    <p>Tu hamesha aise hi cute aur pagal rehna! 😂💕</p>
+  </div>
+</section>
+
+<section class="peach">
+  <div class="emoji">🕯️</div><h2>Make A Wish! ✨</h2>
+  <div class="candles"><span class="flame">🕯️</span><span class="flame">🕯️</span><span class="flame">🕯️</span><span class="flame">🕯️</span><span class="flame">🕯️</span></div>
+  <div class="cake" id="cake" onclick="cutCake()">🎂</div>
+  <p id="cakeText">Cake pe tap karna, birthday girl! 🎀</p>
+</section>
+
+<section class="mint">
+  <div class="emoji">📸</div><h2>Beautiful Memories 💕</h2>
+  <p>Some moments become memories, and some people make those memories special. 🥹🩷</p>
+  <div class="photo-grid">
+    <img src="1791197134892.png" alt="Bestie photo 1">
+    <img src="IMG_20260802_132724_485.webp" alt="Bestie photo 2">
+    <img src="IMG_20260809_175400_874.jpg" alt="Bestie photo 3">
+    <img src="IMG-20261008-WA0001.jpg" alt="Bestie photo 4">
+  </div>
+</section>
+
+<section class="blue">
+  <div class="emoji">🦋</div><h2>More Little Moments 🌸</h2>
+  <div class="photo-grid">
+    <img src="IMG-20261008-WA0003.jpg" alt="Bestie photo 5">
+    <img src="IMG-20261008-WA0004.jpg" alt="Bestie photo 6">
+    <img src="IMG-20261008-WA0010.jpg" alt="Bestie photo 7">
+    <img src="IMG-20261008-WA0013.jpg" alt="Bestie photo 8">
+  </div>
+  <p>Har photo mein ek alag memory, aur har memory mein ek cute si smile. 💗</p>
+</section>
+
+<section class="lavender">
+  <div class="emoji">🎁</div><h2>For My Chhoti Chudail 👻</h2>
+  <p>Oye birthday girl, tera gift yahan hai! Jaldi se open kar. 😂💕</p>
+  <div class="gift" id="gift" onclick="openGift()">🎁</div>
+  <div id="giftMessage" class="card"><div class="emoji">💖</div><h2>A Special Gift For You!</h2><p>Tu meri life ki ek bahut special bestie hai. Hamesha khush rehna, pagli! 🥹💕🫶</p></div>
+  <button onclick="startFireworks()">💗 TAP FOR A SURPRISE 💗</button>
+  <p class="small">Tap karo aur surprise enjoy karo! 🎆</p>
+</section>
+
+<section class="peach">
+  <div class="emoji">🎈💗</div><h2>Birthday Magic! ✨</h2>
+  <p>Teri smile se din roshan ho jaaye. Teri duniya hamesha pyaar aur khushiyon se bhari rahe. 💕</p>
+  <button onclick="startFireworks()">🎆 FIREWORKS AGAIN! 🎆</button>
+</section>
+
+<section class="hero">
+  <div class="emoji">👻🩷</div><h1>Happy Birthday!</h1>
+  <div class="card"><h2>Meri Pyari Chhoti Chudail 💗</h2>
+    <p>Hamesha khush rehna, haste rehna, aur apni cute si smile kabhi mat khona. 🥹💕</p>
+    <p>Teri life mein bahut saari happiness, beautiful memories aur amazing moments aayein. ✨🦋</p>
+    <h2>Made With Love 💖</h2>
+  </div>
+  <button onclick="startFireworks()">💖 ONE LAST SURPRISE 💖</button>
+</section>
+<footer>Made with lots of love for my Chhoti Chudail 👻💕</footer>
+
+<script>
+function openPage(){
+  const music=document.getElementById('music');
+  music.play().catch(()=>{});
+  document.querySelector('.lavender').scrollIntoView({behavior:'smooth'});
+}
+function cutCake(){
+  document.getElementById('cake').textContent='🍰';
+  document.getElementById('cakeText').textContent='Yayyy! Happy Birthday, cutie! 🎉💗';
+  startFireworks();
+}
+function openGift(){
+  document.getElementById('gift').textContent='💝';
+  document.getElementById('giftMessage').style.display='block';
+  startFireworks();
+}
+function startFireworks(){
+  const canvas=document.getElementById('fireworks'),ctx=canvas.getContext('2d');
+  const text=document.getElementById('surpriseText'),area=document.getElementById('heartBalloons');
+  canvas.width=innerWidth;canvas.height=innerHeight;
+  let particles=[],confetti=[],running=true;
+  const colors=['#ff4f9a','#ffcf56','#8b7bff','#55dfff','#ff795e','#73e6a2','#ffffff','#ff2994'];
+  function burst(x,y){
+    const color=colors[Math.floor(Math.random()*colors.length)];
+    for(let i=0;i<75;i++){let a=Math.random()*Math.PI*2,s=1.5+Math.random()*6;particles.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:55+Math.random()*35,color,size:2+Math.random()*3})}
+    for(let i=0;i<25;i++)confetti.push({x,y,vx:(Math.random()-.5)*7,vy:-Math.random()*6,life:70,color:colors[Math.floor(Math.random()*colors.length)],size:3+Math.random()*5,rot:Math.random()*6});
+  }
+  for(let i=0;i<7;i++)setTimeout(()=>burst(Math.random()*canvas.width,Math.random()*canvas.height*.7),i*300);
+  let start=performance.now(),last=0;
+  function animate(now){
+    if(!running)return;ctx.clearRect(0,0,canvas.width,canvas.height);
+    if(now-last>400&&now-start<6000){burst(25+Math.random()*(canvas.width-50),30+Math.random()*(canvas.height*.65));last=now}
+    particles=particles.filter(p=>p.life>0);
+    for(const p of particles){p.x+=p.vx;p.y+=p.vy;p.vy+=.035;p.vx*=.99;p.vy*=.99;p.life--;ctx.globalAlpha=Math.min(1,p.life/25);ctx.fillStyle=p.color;ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fill()}
+    confetti=confetti.filter(p=>p.life>0);
+    for(const p of confetti){p.x+=p.vx;p.y+=p.vy;p.vy+=.07;p.rot+=.1;p.life--;ctx.globalAlpha=Math.min(1,p.life/25);ctx.fillStyle=p.color;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot);ctx.fillRect(-p.size/2,-p.size/2,p.size,p.size*1.8);ctx.restore()}
+    ctx.globalAlpha=1;if(now-start<8000)requestAnimationFrame(animate);else{running=false;ctx.clearRect(0,0,canvas.width,canvas.height)}
+  }
+  requestAnimationFrame(animate);
+  const hearts=['💗','💖','💕','💘','🩷','💝','❤️'];
+  for(let i=0;i<16;i++)setTimeout(()=>{const b=document.createElement('div');b.className='heart-balloon';b.textContent=hearts[Math.floor(Math.random()*hearts.length)];b.style.left=(4+Math.random()*88)+'%';b.style.animationDuration=(4+Math.random()*3)+'s';area.appendChild(b);setTimeout(()=>b.remove(),7500)},4000+i*350);
+  setTimeout(()=>{text.textContent='Surprise! 💗🎉';text.classList.remove('show');void text.offsetWidth;text.classList.add('show')},8500);
+}
+window.addEventListener('resize',()=>{const c=document.getElementById('fireworks');c.width=innerWidth;c.height=innerHeight});
+</script>
+</body>
+</html>
+
